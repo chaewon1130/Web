@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+/* WEB 폰트*/
+@font-face{
+    font-family: 'NG';
+    src: url("/studyhtml5/WebContent/font/NanumGothic.woff") format('woff');
+}
+@font-face{
+    font-family: 'NGB';
+    src: url("/studyhtml5/WebContent/font/NanumGothicBold.woff") format('woff');
+}
+@font-face{
+    font-family: 'NGEB';
+    src: url("/studyhtml5/WebContent/font/NanumGothicExtraBold.woff") format('woff');
+}
+html{
+    font-family: NG;
+}
