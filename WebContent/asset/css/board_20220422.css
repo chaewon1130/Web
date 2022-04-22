@@ -16,3 +16,7 @@
 html{
     font-family: NG;
 }
+tr:nth-child(even){
+    padding: 10px 30px;
+    background-color: gainsboro;
+}
