@@ -1,5 +1,9 @@
 @charset "UTF-8";
-
+/* 모든 html margin, padding을 0으로 초기화 */
+*{
+    margin: 0px;
+    padding: 0px;
+}
 /* WEB 폰트*/
 @font-face{
     font-family: 'NG';
@@ -16,7 +20,25 @@
 html{
     font-family: NG;
 }
-tr:nth-child(even){
-    padding: 10px 30px;
-    background-color: gainsboro;
+table{
+    width: 600px;
+    border-collapse: collapse;
+}
+td, th{
+    border-bottom: 1px solid lightgray;
+    padding: 5px;
+}
+th{
+    background: gray;
+    color: white;
+}
+
+input[type="text"]
+input[type="password"]{
+  height: auto;	
+  vertical-align: middle;
+}
+select{
+  height: 20px;
+  vertical-align: middle;
 }
