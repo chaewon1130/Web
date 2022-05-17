@@ -30,86 +30,22 @@
     <input type="button" value="전송" onclick="doSave();"> 
 	</div>
 	<form action="<%=contPath %>/board/board.do" name="boardFrm" id="boardFrm">
-	     작업구분 : <input type="hidden" name="work_div" id="work_div" value="doSave"><br>
-	  SEQ : <input type="text" name="seq" id="seq"><br>
-	     제목 : <input type="text" name="title" id="title" maxlength="200"><br>
-	     등록자 : <input type="text" name="reg_id" id="reg_id" maxlength="20"><br>
-	     내용 : <textarea rows="5" cols="50" name="contents" id="contents"></textarea><br>
+	     작업구분 : <input type="text" name="work_div" id="work_div" value="doRetrieve"><br>
 	</form>
 <script type="text/javascript">
     $(document).ready(function(){
       console.log("document ready");
     });
+    
     function doSave(){
       console.log("doSave()");
       // document.boardFrm
       let frm = document.getElementById('boardFrm');
-      // javascript
-      // let title = frm.title.value;
-      
-      // SEQ
-      let seq = $('#seq').val();
-      if(seq === null || seq.trim().length == 0){
-          $('#seq').focus();
-          alert("순번을 입력하세요!");
-          return false;
-        }
-      
-      // 제목
-      // jQuery
-      let title = $('#title').val();
-      console.log("title : " + title);
-      if(title === null || title.trim().length == 0){
-    	  $('#title').focus();
-    	  alert("제목을 입력하세요!");
-    	  return false;
-      }
-      
-      // 작성자
-      let regId = $('#reg_id').val();
-      if(regId === null || regId.trim().length == 0){
-          $('#reg_id').focus();
-          alert("등록자 ID를 입력하세요!");
-          return false;
-        }
-      
-      // 내용
-      let contents = $('#contents').val();
-      if(contents === null || contents.trim().length == 0){
-          $('#contents').focus();
-          alert("내용을 입력하세요!");
-          return false;
-        }
-      
-      // 다 작성 후 최종 confirm
-      if(confirm("저장하시겠습니까?") == false){
-    	  return;
-      }
       
       // Javascript form submit
-      // frm.submit();
+      frm.submit();
       
-      // ajax
-      $.ajax({
-          type: "POST",
-          url:"/studyhtml5/board/board.do",
-          asyn:"true",
-          dataType:"html",
-          data:{
-            // 변수 : 값
-        	  work_div: $('#work_div').val(),
-            seq: seq,
-            title: title,
-            reg_id: regId,
-            contents: contents
-          },
-          success:function(data){//통신 성공
-              console.log("success data:"+data);
-            },
-            error:function(data){//실패시 처리
-              console.log("error:"+data);
-            }
-        });
+      
     }
 </script>
 </body>

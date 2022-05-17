@@ -113,10 +113,10 @@ public class BoardMain {
 	}
 	
 	public void doRetrieve() {
-		search01.setPageSize(30);
+		search01.setPageSize(10);
 		search01.setPageNum(1);
-		search01.setSearchDiv("10");
-		search01.setSearchWord("77");
+		search01.setSearchDiv("40");
+		search01.setSearchWord("제목8");
 		List<BoardVO> list = dao.doRetrieve(search01);
 		if(list.size() > 0) {
 			for(BoardVO vo : list) {
