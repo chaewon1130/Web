@@ -76,6 +76,7 @@
 	   </div>
 	   <form action="<%=contPath %>/board/board.do" name="boardListFrm" id="boardListFrm" method="get">
 	     <input type="hidden" name="work_div" id="work_div">
+	     <input type="hidden" name="seq" id="seq">
 	     <div>
 	       <label>구분</label>
 	       <select name="searchDiv" id="searchDiv">
@@ -96,7 +97,7 @@
 	   </form>
 	</div>
 	
-  <table>
+  <table id="listTable">
     <thead>
       <tr>
       <th width="80">No.</th>
@@ -104,7 +105,7 @@
       <th width="80">조회수</th>
       <th width="100">등록자</th>
       <th width="80">등록일</th>
-      <th width="80" style="display: none;">SEQ</th>
+      <th width="80" style="display: none">SEQ</th>
       </tr>
     </thead>
     <tbody>
@@ -118,7 +119,7 @@
         <td class="txt_right"><%=vo.getReadCnt() %></td>
         <td><%=vo.getModId() %></td>
         <td class="txt_center"><%=vo.getModDt() %></td>
-        <td style="display: none;"><%=vo.getSeq() %></td>
+        <td style="display: none"><%=vo.getSeq() %></td>
       </tr>
     <%
       } // for
@@ -133,6 +134,26 @@
     </tbody>
   </table>
 <script type="text/javascript">
+
+    $('#listTable > tbody').on('click', 'tr', function(){
+     	console.log("#listTable > tbody");
+     	console.log($(this));
+    	let pTr = $(this);
+    	let tdArray = pTr.children();
+//    	let seq = tdArray.eq(5).text();
+      let seq = tdArray.last().text();
+//      console.log(seq);
+      let frm = document.getElementById('boardListFrm');
+      frm.seq.value = seq; // 게시판 PK
+      frm.work_div.value = "doSelectOne";
+      
+      console.log(frm.seq.value);
+      console.log(frm.work_div.value);
+      
+      // 서버전송
+      frm.submit();
+    });
+    
     function doRetrieve(){
     	// alert("doRetrieve()");
     	// javascript form submit()
@@ -145,7 +166,7 @@
     	
     	// form submit()
     	frm.submit();
-    }
+    };
     
     $('#moveToReg').on('click', function(){
     	console.log("moveToReg");
