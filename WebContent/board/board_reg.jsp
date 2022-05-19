@@ -17,20 +17,20 @@
 <!--스타일 시트 -->
 <style type="text/css">
 </style>
-<title>Insert title here</title>
+<title>등록 화면</title>
 <!-- jquery -->
 <script type="text/javascript" src="<%=contPath %>/asset/js/jquery-1.12.4.js"></script>
 <!-- jQuery UI -->
 <script type="text/javascript" src="<%=contPath %>/asset/js/jquery-ui.js"></script>
 </head>
 <body>
-	<h2>View -> Controller call</h2>
+	<h2>게시등록(View -> Controller) call</h2>
 	<hr/>
 	<div>
     <input type="button" value="전송" onclick="doSave();"> 
 	</div>
 	<form action="<%=contPath %>/board/board.do" name="boardFrm" id="boardFrm">
-	     작업구분 : <input type="hidden" name="work_div" id="work_div" value="doSave"><br>
+	  <input type="hidden" name="work_div" id="work_div" value="doSave"><br>
 	  SEQ : <input type="text" name="seq" id="seq"><br>
 	     제목 : <input type="text" name="title" id="title" maxlength="200"><br>
 	     등록자 : <input type="text" name="reg_id" id="reg_id" maxlength="20"><br>

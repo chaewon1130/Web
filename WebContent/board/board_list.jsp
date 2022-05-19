@@ -1,3 +1,4 @@
+<%@page import="com.pcwk.cmn.StringUtil"%>
 <%@page import="com.pcwk.board.BoardVO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.pcwk.cmn.SearchVO"%>
@@ -8,7 +9,7 @@
 <%
     // param
     SearchVO param = (SearchVO)request.getAttribute("param");
-    out.println("param : " + param);
+    //out.println("param : " + param);
     
     // list
     List<BoardVO> list = (List<BoardVO>)request.getAttribute("list");
@@ -16,6 +17,30 @@
     	for(BoardVO vo : list){
 //     		out.println(vo + "<br>");
     	}
+    }
+    
+    // null 처리
+    int totalCnt =  request.getAttribute("totalCnt") == null ? 0 : (Integer)request.getAttribute("totalCnt");
+    LOG.debug("totalCnt : " + totalCnt);
+    
+    // 현재 페이지
+    int currPageNo = 1;
+ 
+    // 페이지당 보여줄 글수
+    int rowPerPage = 10;
+    
+    // 1 2 3 4 5 6 7 8 9 10
+    int bottomCount = 10;
+    
+    // 호출 URL
+    String goPageURL = contPath + "/board/board.do";
+    
+    // 호출 자바스크립트
+    String scriptName = "doSearchPage";
+    
+    if(param != null){
+    	currPageNo = param.getPageNum();
+    	rowPerPage = param.getPageSize();
     }
 %>
 <!DOCTYPE html>
@@ -27,16 +52,23 @@
 
 <!--reset 스타일 시트 -->
 <!-- link rel="stylesheet" type="text/css" href="<%=contPath %>/asset/css/reset.css" -->
+<!-- 부트스트랩 -->
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet"  type="text/css" href="<%=contPath %>/asset/css/jquery-ui.css">
 
 <!--스타일 시트 -->
 <style type="text/css">
 </style>
-<title>Insert title here</title>
+<title>게시목록</title>
 <!-- jquery -->
 <script type="text/javascript" src="<%=contPath %>/asset/js/jquery-1.12.4.js"></script>
 <!-- jQuery UI -->
 <script type="text/javascript" src="<%=contPath %>/asset/js/jquery-ui.js"></script>
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style type="text/css">
 	*{
 	  margin: 0px;
@@ -77,6 +109,7 @@
 	   <form action="<%=contPath %>/board/board.do" name="boardListFrm" id="boardListFrm" method="get">
 	     <input type="hidden" name="work_div" id="work_div">
 	     <input type="hidden" name="seq" id="seq">
+	     <input type="hidden" name="pageNum" id="pageNum" value="<%if(param != null){out.print(param.getPageNum());}%>">
 	     <div>
 	       <label>구분</label>
 	       <select name="searchDiv" id="searchDiv">
@@ -129,11 +162,32 @@
         <td colspan="99">No data found</td>
       </tr>
     <%
-    }
+    }// else
     %>
+    <!-- paging -->
+    <div>
+      <%=StringUtil.renderPaging(totalCnt, currPageNo, rowPerPage, bottomCount, goPageURL, scriptName) %>
+    </div>
+    <!--// paging -->
     </tbody>
   </table>
 <script type="text/javascript">
+    function doSearchPage(url, num){
+    	console.log("url:" + url);
+    	console.log("num:" + num);
+    	
+    	let frm = document.getElementById('boardListFrm');
+      frm.work_div.value = 'doRetrieve';
+      frm.pageNum.value = num;
+      
+      console.log("frm.work_div.value : " + frm.work_div.value);
+      console.log("frm.searchDiv.value : " + frm.searchDiv.value);
+      console.log("frm.pageSize.value : " + frm.pageSize.value);
+      
+      frm.action = url;
+      // form submit()
+      frm.submit();
+    }
 
     $('#listTable > tbody').on('click', 'tr', function(){
      	console.log("#listTable > tbody");
