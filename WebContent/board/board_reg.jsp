@@ -37,6 +37,7 @@
 	     내용 : <textarea rows="5" cols="50" name="contents" id="contents"></textarea><br>
 	</form>
 <script type="text/javascript">
+
     $(document).ready(function(){
       console.log("document ready");
     });

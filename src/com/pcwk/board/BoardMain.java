@@ -145,9 +145,9 @@ public class BoardMain {
 	public static void main(String[] args) {
 		BoardMain main = new BoardMain();
 		//삭제
-		main.doDelete();
+//		main.doDelete();
 		//등록
-//		main.doSave();
+		main.doSave();
 		//수정
 //		main.doUpdate();
 		//조회
