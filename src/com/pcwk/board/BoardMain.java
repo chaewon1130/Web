@@ -15,7 +15,7 @@ public class BoardMain {
 	
 	public BoardMain() {
 		dao = new BoardDao();
-		board01 = new BoardVO(7451541, "제목_900001", "내용_900001", 0, "", "pcwk", "", "pcwk");
+		board01 = new BoardVO(7451540, "제목_900001", "내용_900001", 0, "", "pcwk", "", "pcwk");
 		search01 = new SearchVO("40", "제목8", 10, 1);
 	}
 	

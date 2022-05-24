@@ -34,69 +34,44 @@
 	<div class="container">
 		<!-- 제목 -->
 		<div class="page-header">
-			<h2>게시 상세</h2>
+			<h2>게시 등록</h2>
 		</div>
 		<!--//제목  ------------------------------------------->
 		<!-- 버튼 -->
 		<div class="row text-right">
 			<label class="col-sm-3 col-md-2 col-lg-2"></label>
 			<div class="col-sm-9 col-md-10 col-lg-10">
-				<input type="button" class="btn btn-primary btn-sm" value="수정">
-				<input type="button" class="btn btn-primary btn-sm" value="삭제">
 				<input type="button" class="btn btn-primary btn-sm" value="목록">
+				<input type="button" class="btn btn-primary btn-sm" value="등록">
 			</div>
 		</div>
 		<!--//버튼 -------------------------------------------->
 		<!-- form -->
 		<form action="" class="form-horizontal">
 			<div class="form-group">
-				<label for="title" class="col-sm-3 col-md-2 col-lg-2 control-label">제목</label>
+				<label for="title" class="col-sm-3 col-md-2 col-lg-2">제목</label>
 				<div class="col-sm-9 col-md-10 col-lg-10">
 					<input type="text" maxlength="100" name="title" id="title" placeholder="제목" class="form-control">
 				</div>
 			</div>
-			<!--<div class="form-group">
-				<label for="div" class="col-sm-3 col-md-2 col-lg-2 control-label">구분</label>
+			<div class="form-group">
+				<label for="div" class="col-sm-3 col-md-2 col-lg-2">구분</label>
 				<div class="col-sm-9 col-md-10 col-lg-10">
 					<select name="div" id="div" class="form-control">
 						<option value="10">공지사항</option>
 						<option value="20">자유게시판</option>
 					</select>
 				</div>
-			</div>-->
+			</div>
 			<div class="form-group">
-				<label for="regId" class="col-sm-3 col-md-2 col-lg-2 control-label">등록자</label>
+				<label for="regId" class="col-sm-3 col-md-2 col-lg-2">등록자</label>
 				<div class="col-sm-9 col-md-10 col-lg-10">
 					<input type="text" maxlength="100" name="regId" id="regId" placeholder="등록자" class="form-control">
 				</div>
 			</div>
-			<div class="form-group">
-        <label for="regDt" class="col-sm-3 col-md-2 col-lg-2 control-label">등록일</label>
-        <div class="col-sm-9 col-md-10 col-lg-10">
-            <input type="text" maxlength="100" name="regDt" id="regDt" placeholder="등록일" class="form-control">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="modId" class="col-sm-3 col-md-2 col-lg-2 control-label">수정자</label>
-        <div class="col-sm-9 col-md-10 col-lg-10">
-            <input type="text" maxlength="100" name="modId" id="modId" placeholder="수정자" class="form-control">
-        </div>
-    </div>
-    <div class="form-group">
-	    <label for="modDt" class="col-sm-3 col-md-2 col-lg-2 control-label">수정일</label>
-	    <div class="col-sm-9 col-md-10 col-lg-10">
-	        <input type="text" maxlength="100" name="modDt" id="modDt" placeholder="수정일" class="form-control">
-	    </div>
-    </div>
-    <div class="form-group">
-        <label for="readCnt" class="col-sm-3 col-md-2 col-lg-2 control-label">조회수</label>
-        <div class="col-sm-9 col-md-10 col-lg-10">
-            <input type="text" maxlength="100" name="readCnt" id="readCnt" placeholder="조회수" class="form-control">
-        </div>
-    </div>
 			<!-- 내용 -->
 			<div class="form-group">
-				<label for="contents" class="col-sm-3 col-md-2 col-lg-2 control-label">내용</label>
+				<label for="contents" class="col-sm-3 col-md-2 col-lg-2">내용</label>
 				<div class="col-sm-9 col-md-10 col-lg-10">
 					<textarea name="contents" id="contents" cols="20" rows="5" class="form-control"></textarea>
 				</div>

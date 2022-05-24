@@ -21,12 +21,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="<%=contPath %>/imgs/favicon.ico">
 
 <!--reset 스타일 시트 -->
-<link rel="stylesheet" type="text/css" href="<%=contPath %>/asset/css/reset.css">
-<!-- 부트스트랩 -->
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- link rel="stylesheet" type="text/css" href="<%=contPath %>/asset/css/reset.css" -->
 <link rel="stylesheet"  type="text/css" href="<%=contPath %>/asset/css/jquery-ui.css">
 <!--스타일 시트 -->
 <style type="text/css">
@@ -36,79 +31,52 @@
 <script type="text/javascript" src="<%=contPath %>/asset/js/jquery-1.12.4.js"></script>
 <!-- jQuery UI -->
 <script type="text/javascript" src="<%=contPath %>/asset/js/jquery-ui.js"></script>
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=contPath %>/asset/js/common.js"></script>
 </head>
 <body>
-  <!-- div container -->
-  <div class="container">
-      <!-- 제목 -->
-    <div class="page-header">
-      <h2>게시 상세</h2>
-    </div>
-    <!--//제목  ------------------------------------------->
-        <!-- 버튼 -->
-    <div class="row text-right">
-      <label class="col-sm-3 col-md-2 col-lg-2"></label>
-      <div class="col-sm-9 col-md-10 col-lg-10">
-        <input type="button" class="btn btn-primary btn-sm" value="수정" id="doUpdate">
-        <input type="button" class="btn btn-primary btn-sm" value="삭제" id="doDelete">
-        <input type="button" class="btn btn-primary btn-sm" value="목록" id="moveToList">
-      </div>
-    </div>
-    <!--//버튼 -------------------------------------------->
-
-	<form action="<%=contPath %>/board/board.do" name="boardFrm" id="boardFrm" class="form-horizontal">
+	<h2>게시 상세</h2>
+	<hr/>
+	<div width="600">
+	   <input type="button" value="수정" id="doUpdate">
+	   <input type="button" value="삭제" id="doDelete">
+	   <input type="button" value="목록" id="moveToList">
+	</div>
+	<form action="<%=contPath %>/board/board.do" name="boardFrm" id="boardFrm">
 	   <input type="hidden" name="seq" id="seq" value="${vo.seq}">
 	   <input type="hidden" name="work_div" id="work_div">
-     <div class="form-group">
-       <label for="title" class="col-sm-3 col-md-2 col-lg-2">제목</label>
-       <div class="col-sm-9 col-md-10 col-lg-10">
-         <input type="text" maxlength="200" name="title" id="title" placeholder="제목" class="form-control" value="${vo.title}">
-       </div>
-     </div>	   
-     <div class="form-group">
-       <label for="reg_id" class="col-sm-3 col-md-2 col-lg-2">등록자</label>
-       <div class="col-sm-9 col-md-10 col-lg-10">
-         <input type="text" maxlength="50" name="reg_id" id="reg_id" placeholder="등록자" class="form-control" readonly value="${vo.regId}">
-       </div>
-     </div>
-     <div class="form-group">
-       <label for="regDt" class="col-sm-3 col-md-2 col-lg-2">등록일</label>
-       <div class="col-sm-9 col-md-10 col-lg-10">
-           <input type="text" maxlength="50" name="regDt" id="regDt" placeholder="등록일" class="form-control" readonly value="${vo.regDt}">
-       </div>
-    </div>
-    <div class="form-group">
-		   <label for="mod_id" class="col-sm-3 col-md-2 col-lg-2">수정자</label>
-		   <div class="col-sm-9 col-md-10 col-lg-10">
-		       <input type="text" maxlength="50" name="mod_id" id="mod_id" placeholder="수정자" class="form-control" value="${vo.modId}">
-		   </div>
-    </div>
-    <div class="form-group">
-      <label for="modDt" class="col-sm-3 col-md-2 col-lg-2">수정일</label>
-      <div class="col-sm-9 col-md-10 col-lg-10">
-          <input type="text" maxlength="50" name="modDt" id="modDt" placeholder="수정일" class="form-control" readonly value="${vo.modDt}">
-      </div>
-    </div>
-    <div class="form-group">
-        <label for="readCnt" class="col-sm-3 col-md-2 col-lg-2">조회수</label>
-        <div class="col-sm-9 col-md-10 col-lg-10">
-            <input type="text" maxlength="50" name="readCnt" id="readCnt" placeholder="조회수" class="form-control" readonly value="${vo.readCnt}">
-        </div>
-    </div>
-    <!-- 내용 -->
-    <div class="form-group">
-      <label for="contents" class="col-sm-3 col-md-2 col-lg-2">내용</label>
-      <div class="col-sm-9 col-md-10 col-lg-10">
-        <textarea name="contents" id="contents" cols="20" rows="5" class="form-control">${vo.contents}</textarea>
-      </div>
-    </div>
-    <!--//내용 ---------------------------------------->
+	   <table width="600">
+	     <tr>
+	       <td width="100">제목</td>
+	       <td width="500"><input value="${vo.title}" type="text" name="title" id="title" maxlength="200" size="50"></td>
+	     </tr>
+	     <tr>
+         <td width="100">등록자</td>
+         <td width="500"><input value="${vo.regId}" type="text" name="reg_id" id="reg_id" maxlength="50" size="50" readonly></td>
+       </tr>
+       <tr>
+         <td width="100">등록일</td>
+         <td width="500"><input value="${vo.regDt}" type="text" name="regDt" id="regDt" maxlength="50" size="50" readonly></td>
+       </tr>
+       <tr>
+         <td width="100">수정자</td>
+         <td width="500"><input value="${vo.modId}"type="text" name="mod_id" id="mod_id" maxlength="50" size="50"></td>
+       </tr>
+       <tr>
+         <td width="100">수정일</td>
+         <td width="500"><input value="${vo.modDt}"type="text" name="modDt" id="modDt" maxlength="50" size="50" readonly></td>
+       </tr>
+       <tr>
+         <td width="100">조회수</td>
+         <td width="500"><input value="${vo.readCnt}"type="text" name="readCnt" id="readCnt" maxlength="50" size="50" readonly></td>
+       </tr>
+       <tr>
+         <td colspan="2">내용</td>
+       </tr>
+       <tr>
+         <td colspan="2"><textarea rows="5" cols="67" name="contents" id="contents">${vo.contents}</textarea> </td>
+       </tr>
+	   </table>
 	</form>
-	</div>
-  <!--//div container --------------------------------------->
 	<script type="text/javascript">
 	    $('#doUpdate').on('click', function(){
 	    	console.log("doUpdate");
